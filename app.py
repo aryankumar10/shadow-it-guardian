@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 # Create a Flask application instance
 app = Flask(__name__)
@@ -18,7 +18,15 @@ def get_data_1():
         "LOGISTIC Manager": 4,
         "LOGISTIC Employee": 8
     }
-    return jsonify(sample_data)
+    user_dept = request.args.get('useremail')
+    if user_dept:
+        department = sample_data.get(user_dept)
+        if department:
+            return jsonify({"department": department})
+        else:
+            return jsonify({"error": "User email not found"}), 404
+    else:
+        return jsonify(sample_data)
 
 
 @app.route('/api/employees_min')
@@ -29,7 +37,16 @@ def get_data_2():
         "LOGISTIC Manager": 2,
         "LOGISTIC Employee": 8
     }
-    return jsonify(sample_data)
+    user_dept = request.args.get('useremail')
+    if user_dept:
+        department = sample_data.get(user_dept)
+        if department:
+            return jsonify({"department": department})
+        else:
+            return jsonify({"error": "User email not found"}), 404
+    else:
+        return jsonify(sample_data)
+
 
 @app.route('/api/employees_depts')
 def get_data_3():
@@ -40,7 +57,17 @@ def get_data_3():
         "logistic_manager@moveworkslabs.com": "LOGISTIC Manager",
         "logistic_employee@moveworkslabs.com": "LOGISTIC Employee"
     }
-    return jsonify(sample_data)
+
+    user_email = request.args.get('useremail')
+    if user_email:
+        department = sample_data.get(user_email)
+        if department:
+            return jsonify({"department": department})
+        else:
+            return jsonify({"error": "User email not found"}), 404
+    else:
+        return jsonify(sample_data)
+
 
 @app.route('/api/depts_msgs')
 def get_data_4():
@@ -50,7 +77,15 @@ def get_data_4():
         "LOGISTIC Manager": "Cannot take leave due to minimum LOGISTIC Manager required rule",
         "LOGISTIC Employee": "Cannot take leave due to minimum LOGISTIC Employee required rule"
     }
-    return jsonify(sample_data)
+    user_dept = request.args.get('useremail')
+    if user_dept:
+        department = sample_data.get(user_dept)
+        if department:
+            return jsonify({"department": department})
+        else:
+            return jsonify({"error": "User email not found"}), 404
+    else:
+        return jsonify(sample_data)
 
 
 # This is only for local testing, Vercel will use its own server
