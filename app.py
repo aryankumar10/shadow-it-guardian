@@ -11,7 +11,7 @@ def home():
 
 # Define a route that returns JSON data
 @app.route('/api/employees_current')
-def get_data():
+def get_data_1():
     sample_data = {
         "IT Manager": 2,
         "IT Developer": 6,
@@ -22,7 +22,7 @@ def get_data():
 
 
 @app.route('/api/employees_min')
-def get_data():
+def get_data_2():
     sample_data = {
         "IT Manager": 1,
         "IT Developer": 4,
@@ -32,7 +32,7 @@ def get_data():
     return jsonify(sample_data)
 
 @app.route('/api/employees_depts')
-def get_data():
+def get_data_3():
     sample_data = {
         "everett.allen741@moveworkslabs.com": "IT Manager",
         "it_manager@moveworkslabs.com": "IT Manager",
@@ -43,7 +43,7 @@ def get_data():
     return jsonify(sample_data)
 
 @app.route('/api/depts_msgs')
-def get_data():
+def get_data_4():
     sample_data = {
         "IT Manager": "Cannot take leave due to minimum IT Manager required rule",
         "IT Developer": "Cannot take leave due to minimum IT Developer required rule",
