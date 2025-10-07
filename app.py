@@ -18,9 +18,9 @@ def get_data_1():
         "LOGISTIC Manager": 4,
         "LOGISTIC Employee": 8
     }
-    user_dept = request.args.get('useremail')
+    user_dept = request.args.get('userdept').lower()
     if user_dept:
-        department = sample_data.get(user_dept)
+        department = sample_data.get(user_dept).lower()
         if department:
             return jsonify({"department": department})
         else:
@@ -37,9 +37,9 @@ def get_data_2():
         "LOGISTIC Manager": 2,
         "LOGISTIC Employee": 8
     }
-    user_dept = request.args.get('useremail')
+    user_dept = request.args.get('userdept').lower()
     if user_dept:
-        department = sample_data.get(user_dept)
+        department = sample_data.get(user_dept).lower()
         if department:
             return jsonify({"department": department})
         else:
@@ -77,9 +77,9 @@ def get_data_4():
         "LOGISTIC Manager": "Cannot take leave due to minimum LOGISTIC Manager required rule",
         "LOGISTIC Employee": "Cannot take leave due to minimum LOGISTIC Employee required rule"
     }
-    user_dept = request.args.get('useremail')
+    user_dept = request.args.get('userdept').lower()
     if user_dept:
-        department = sample_data.get(user_dept)
+        department = sample_data.get(user_dept).lower()
         if department:
             return jsonify({"department": department})
         else:
